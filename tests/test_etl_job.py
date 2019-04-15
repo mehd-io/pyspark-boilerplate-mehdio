@@ -9,12 +9,13 @@ that is bundled with the PySpark package.
 import unittest
 
 import json
-
+import os
 from pyspark.sql.functions import mean
+from src.helpers.spark import start_spark
+from src.jobs.demo_job import transform_data
 
-from dependencies.spark import start_spark
-from jobs.etl_job import transform_data
-
+# To be able to launch a spark session locally
+os.environ["PYTEST"] = "1"
 
 class SparkETLTests(unittest.TestCase):
     """Test suite for transformation in etl_job.py
@@ -24,7 +25,7 @@ class SparkETLTests(unittest.TestCase):
         """Start Spark, define config and path to test data
         """
         self.config = json.loads("""{"steps_per_floor": 21}""")
-        self.spark, *_ = start_spark()
+        self.spark = start_spark()
         self.test_data_path = 'tests/test_data/'
 
     def tearDown(self):
@@ -76,6 +77,3 @@ class SparkETLTests(unittest.TestCase):
         self.assertTrue([col in expected_data.columns
                          for col in data_transformed.columns])
 
-
-if __name__ == '__main__':
-    unittest.main()
