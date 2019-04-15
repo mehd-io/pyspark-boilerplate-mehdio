@@ -2,10 +2,14 @@
 */__pycache__/*
 *?metastore_db/*
 */spark_warehouse/*
-.mypy_cache/
 .vscode/*
-.venv
 venv/*
 loaded_data/*
 derby.log
 .DS_Store
+spark_warehouse
+build/
+*.egg-info
+__pycache__/
+*_spark_dist
+*.zip
