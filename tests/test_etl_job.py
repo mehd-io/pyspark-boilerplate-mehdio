@@ -1,10 +1,10 @@
 """
 Test the transform logics with sample of data
 """
-from pyspark.sql.functions import mean
 from datajob.helpers.spark import get_spark_session
 from datajob.jobs.demo_job import transform_data
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import mean
 
 
 def test_transform_data(spark: SparkSession, test_data_path="tests/fixtures/"):

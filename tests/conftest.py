@@ -1,6 +1,6 @@
 import pytest
-from pyspark.sql import SparkSession
 from datajob.helpers.spark import get_spark_session
+from pyspark.sql import SparkSession
 
 
 @pytest.fixture(name="spark", scope="session")
