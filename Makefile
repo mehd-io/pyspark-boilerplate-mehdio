@@ -11,7 +11,7 @@ test:
 		test-mypy
 
 test-black: # code formatter
-	black -l 80 $(PY_MODULES)
+	black --check -l 80 $(PY_MODULES)
 
 test-mypy:  # typing check
 	mypy $(PY_MODULES)
@@ -49,6 +49,5 @@ run:
 	/usr/spark-3.1.1/bin/spark-submit \
 	--jars jars/spark-excel_2.11-0.9.9.jar \
 	--py-files /workspaces/pyspark-boilerplate-mehdio/datajob.zip \
-	--files /workspaces/pyspark-boilerplate-mehdio/configs/etl_config.json \
 	datajob/cli.py \
 	--job-name demo_job
