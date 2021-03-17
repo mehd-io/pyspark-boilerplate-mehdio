@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
+'''
+Package py dependencies and main py application into a `datajob.zip` folder
+'''
 mkdir to_upload
 poetry export -f requirements.txt --output requirements.txt
 pip3 -q install -r requirements.txt -t to_upload
+rm -r requirements.txt
 cp -r {setup.py,datajob} to_upload
 cd to_upload
 version=$(echo `python3 setup.py --version` | sed s/_/-/g)
