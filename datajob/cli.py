@@ -13,7 +13,7 @@ def run(job_name: str = typer.Option("")) -> None:
     start = time.time()
     try:
         module = importlib.import_module(f"jobs.{job_name}")
-        module.run()
+        module.run(job_name)
         end = time.time()
         logger.info(f"Execution of job {job_name} took {end - start} seconds")
     except Exception as e:
