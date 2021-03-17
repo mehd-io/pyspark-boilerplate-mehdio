@@ -28,5 +28,11 @@ ENV PYSPARK_DRIVER_PYTHON python3
 ENV PYSPARK_PYTHON python3
 # Point to py4j deps
 ENV PYTHONPATH ${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.9-src.zip:$PYTHONPATH
+ENV PATH="/root/.poetry/bin:$PATH"
+
+# Install py deps
+COPY poetry.lock ./
+COPY pyproject.toml ./
+RUN poetry config virtualenvs.create false && poetry install
 
 CMD ["bash"]
